@@ -1,0 +1,44 @@
+﻿@model IEnumerable<GerencFinanceiro.Models.RelatorioDespesa>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet">
+<div>
+    <div class="row">
+        <div class="col-md-8">
+            <form id="despesaForm">
+                <input type="hidden" asp-for="ItemId" />
+                <div class="form-group">
+                    <label asp-for="ItemNome" class="control-label"></label>
+                    <input asp-for="ItemNome" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Categoria" class="control-label"></label>
+                    <select asp-for="Categoria" class="form-control">
+                        <option value="">-- Selecione a Categoria --</option>
+                        <option value="Alimentacao">Alimentação</option>
+                        <option value="Compras">Compras</option>
+                        <option value="Transporte">Transporte</option>
+                        <option value="Saude">Saúde</option>
+                        <option value="Moradia">Moradia</option>
+                        <option value="Lazer">Lazer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Valor" class="control-label"></label>
+                    <input asp-for="Valor" class="form-control" />
+                </div>
+                <div class="form-group" id="calender-container">
+                    <label asp-for="DataDespesa" class="control-label"></label>
+                    <div class="input-group date">
+                        <input asp-for="DataDespesa" type="text" class="form-control"><span class="input-group-addon">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="button" id="btnSubmit" class="btn btn-block btn-info">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
