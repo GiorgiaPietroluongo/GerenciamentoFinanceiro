@@ -4,7 +4,10 @@ namespace GerencFinanceiro.Models
 {
     public class AppDbContext : DbContext
     {
-        public virtual DbSet<RelatorioDespesa> RelatorioDespesas { get; set; }
+        public virtual DbSet<Financas> Financas { get; set; }
+        public DbSet<Financas> RelatorioFinancas { get; internal set; }
+        public object Receitas { get; internal set; }
+        public object Despesas { get; internal set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         { }
@@ -13,8 +16,8 @@ namespace GerencFinanceiro.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configurações de modelo para RelatorioDespesa
-            modelBuilder.Entity<RelatorioDespesa>(entity =>
+            // Configurações de modelo para RelatorioFinancas
+            modelBuilder.Entity<Financas>(entity =>
             {
                 entity.HasKey(e => e.ItemId); // Configurando chave primária
 
@@ -31,6 +34,10 @@ namespace GerencFinanceiro.Models
                 entity.Property(e => e.Categoria)
                       .IsRequired()
                       .HasMaxLength(100); // Configuração para Categoria
+
+                entity.Property(e => e.IsReceita)
+                     .IsRequired()
+                     .HasColumnType("boolean");
             });
         }
     }

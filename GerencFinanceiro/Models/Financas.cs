@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GerencFinanceiro.Models
 {
-    public class RelatorioDespesa
+    public class Financas
     {
         [Key]
         public int ItemId { get; set; }
@@ -16,7 +16,7 @@ namespace GerencFinanceiro.Models
 
         [Required]
         [DataType(DataType.Currency)]
-        [Column(TypeName = "numeric(10,2)")]  
+        [Column(TypeName = "numeric(10,2)")]
         public decimal Valor { get; set; }
 
         [DataType(DataType.Date)]
@@ -27,5 +27,8 @@ namespace GerencFinanceiro.Models
         [Required]
         [StringLength(100)]
         public string Categoria { get; set; }
+
+        [Required]
+        public bool IsReceita { get; set; }
     }
 }

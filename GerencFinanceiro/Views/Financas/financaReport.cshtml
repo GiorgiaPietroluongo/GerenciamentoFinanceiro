@@ -1,0 +1,20 @@
+﻿@model Dictionary<string, decimal>
+
+<h4>Relatório de Despesas</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Categoria</th>
+            <th>Valor Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Key</td>
+                <td>@item.Value.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
